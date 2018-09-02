@@ -1,4 +1,5 @@
 ﻿using System;
+using JeremyAnsel.Media.WavefrontObj;
 
 namespace ModelToObj
 {
@@ -6,7 +7,20 @@ namespace ModelToObj
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (args.Length == 0 || string.IsNullOrEmpty(args[0]))
+            {
+                Console.Error.WriteLine("Input file is required");
+                return;
+            }
+
+            string input = args[0];
+            string output = input.Replace(".model", ".obj");
+            if (args.Length > 1 && !string.IsNullOrEmpty(args[1]))
+                output = args[1];
+            
+            ModelImporter importer = new ModelImporter();
+            ObjFile obj = importer.Import(input);
+            obj.WriteTo(output);
         }
     }
 }

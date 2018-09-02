@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ModelToObj": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\dev\\workspace\\modding\\Payday 2\\acvent04.model\" "
+    }
+  }
+}

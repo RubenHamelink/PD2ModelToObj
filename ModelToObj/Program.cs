@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using JeremyAnsel.Media.WavefrontObj;
 
 namespace ModelToObj
@@ -20,6 +21,9 @@ namespace ModelToObj
             
             ModelImporter importer = new ModelImporter();
             ObjFile obj = importer.Import(input);
+            string directory = Path.GetDirectoryName(output);
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
             obj.WriteTo(output);
         }
     }
